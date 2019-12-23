@@ -1,2 +1,4 @@
 dist/*
 node_modules/*
+#不忽略的文件
+!dist/index.html
