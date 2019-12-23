@@ -1,0 +1,24 @@
+{
+  "name": "babylon-study",
+  "version": "1.0.0",
+  "description": "babylon 3d动画学习",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "author": "rockan007",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^3.4.0",
+    "csv-loader": "^3.0.2",
+    "file-loader": "^5.0.2",
+    "style-loader": "^1.1.1",
+    "webpack": "^4.41.4",
+    "webpack-cli": "^3.3.10",
+    "xml-loader": "^1.2.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15"
+  }
+}
