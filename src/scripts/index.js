@@ -1,4 +1,3 @@
-import _ from "lodash";
 import Td from './td.js';
 import "../styles/td.css";
 import * as BABYLON from "babylonjs";
@@ -8,7 +7,6 @@ function component() {
     element.id = "renderCanvas";
     return element;
 }
-
 function renderDiv(element) {
     let engine = new BABYLON.Engine(element, true);
     let scene = Td.createScene(element, engine);

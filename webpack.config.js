@@ -17,7 +17,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: "Output Management",
+            title: "lostbug",
         })
     ],
     output: {
@@ -30,6 +30,11 @@ module.exports = {
             use: [
                 'style-loader',
                 'css-loader'
+            ]
+        }, {
+            test: /\.(png|svg|jpg|gif)$/,
+            use: [
+                'file-loader'
             ]
         }]
     }
