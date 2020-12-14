@@ -1,10 +1,13 @@
 import Td from './td.js';
 import "../styles/td.css";
+import earcut from "earcut";
 import * as BABYLON from "babylonjs";
+
 
 function component() {
     const element = document.createElement('canvas');
     element.id = "renderCanvas";
+    element.extends="minimal";
     return element;
 }
 function renderDiv(element) {

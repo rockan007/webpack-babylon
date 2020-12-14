@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {
     CleanWebpackPlugin
@@ -18,7 +19,10 @@ module.exports = {
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             title: "lostbug",
-        })
+        }),
+        new webpack.ProvidePlugin({
+            'earcut': 'earcut'
+        }),
     ],
     output: {
         filename: '[name].bundle.js',
