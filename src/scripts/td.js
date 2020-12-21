@@ -25,7 +25,8 @@ export default class Td {
         semi_house.position.z = 3;
 
         this.positionHouses(detached_house, semi_house);
-        this.buildCar(scene);
+        const car= this.buildCar(scene);
+        this.setCarAnimation(car,scene);
         return scene;
     }
     static buildCar(scene) {
@@ -53,12 +54,38 @@ export default class Td {
             wrap: true
         });
         car.material = carMat;
+        car.rotation = new BABYLON.Vector3(-Math.PI / 2, 0, Math.PI / 2);
+        car.position.y = 0.16;
+        car.position.x = 3;
+        car.position.z = 7;
 
-        this.buildWheels(car,scene);
+        this.buildWheels(car, scene);
+      
         return car;
     }
+    static setCarAnimation(car,scene) {
+        const animCar = new BABYLON.Animation("carAnimation", "position.z", 30,
+         BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+         const carKeys=[];
+         carKeys.push({
+             frame:0,
+             value:7
+         });
+         carKeys.push({
+             frame:150,
+             value:-7,
+         });
+         carKeys.push({
+             frame:200,
+             value:-7
+         });
+         animCar.setKeys(carKeys);
+         car.animations=[];
+         car.animations.push(animCar);
+         scene.beginAnimation(car,0,200,true);
+    }
     //构建车轮
-    static buildWheels(car,scene) {
+    static buildWheels(car, scene) {
         //wheel face UVs
         const wheelUV = [];
         wheelUV[0] = new BABYLON.Vector4(0, 0, 1, 1);
@@ -75,7 +102,7 @@ export default class Td {
             wrap: true
         });
         wheelRB.material = wheelMat;
-        this.setWheelAnimation(wheelRB,scene);
+        this.setWheelAnimation(wheelRB, scene);
 
         wheelRB.parent = car;
         wheelRB.position.z = -0.1;
@@ -88,11 +115,12 @@ export default class Td {
         wheelLB.position.y = -0.2 - 0.035;
         const wheelLF = wheelRF.clone("wheelLF");
         wheelLF.position.y = -0.2 - 0.035;
-        this.setWheelAnimation(wheelLB,scene);
-        this.setWheelAnimation(wheelRF,scene);
-        this.setWheelAnimation(wheelRF,scene);
+        this.setWheelAnimation(wheelLB, scene);
+        this.setWheelAnimation(wheelRF, scene);
+        this.setWheelAnimation(wheelRF, scene);
     }
-    static setWheelAnimation(wheelRB,scene) {
+    //wheelAnmation
+    static setWheelAnimation(wheelRB, scene) {
         const animWheel = new BABYLON.Animation("wheelAnimation", "rotation.y", 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
         const wheelKeys = [];
         //At the animation key 0, the value of rotation.y is 0
